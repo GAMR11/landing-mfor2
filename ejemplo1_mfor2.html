@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mfor2 - Café Premium Ecuatoriano</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(rgba(76, 40, 20, 0.7), rgba(76, 40, 20, 0.7)), 
+                        url('https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            padding: 2rem;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            color: #F5DEB3;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #FFE4B5;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(139, 69, 19, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.6);
+            background: linear-gradient(135deg, #A0522D, #CD853F);
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            background: #FFF8DC;
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: #4A2511;
+            margin-bottom: 3rem;
+        }
+
+        .benefits-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            color: #6B3410;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Product Section */
+        .product-section {
+            background: linear-gradient(135deg, #3E2723 0%, #5D4037 100%);
+            padding: 5rem 2rem;
+            color: white;
+        }
+
+        .product-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .product-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .product-details h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        .product-details ul {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .product-details li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .product-details li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background: #F5F5DC;
+            padding: 5rem 2rem;
+        }
+
+        .testimonials-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: -4rem auto 1.5rem;
+            border: 5px solid white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .testimonial-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: #8B4513;
+            font-weight: bold;
+            text-align: right;
+        }
+
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Form Section */
+        .form-section {
+            background: linear-gradient(135deg, rgba(139, 69, 19, 0.9), rgba(160, 82, 45, 0.9)),
+                        url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 5rem 2rem;
+            color: white;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-container h2 {
+            color: #4A2511;
+            text-align: center;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .form-container p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #4A2511;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #D2691E;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #8B4513;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 0.2rem;
+        }
+
+        .checkbox-group label {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #8B4513, #D2691E);
+            color: white;
+            padding: 1.2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 69, 19, 0.4);
+        }
+
+        /* Exclusive Content Section */
+        .exclusive-section {
+            background: #2C1810;
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .exclusive-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .exclusive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .exclusive-item {
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            transition: background 0.3s ease;
+        }
+
+        .exclusive-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .exclusive-item h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Trust Section */
+        .trust-section {
+            background: #FFF8DC;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .trust-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .certifications {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .cert-badge {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-size: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #1A0F0A;
+            color: white;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: #FFD700;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.8rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                background-attachment: scroll;
+            }
+
+            .form-section {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="logo">
+                <div class="logo-icon">M2</div>
+                <span>MFOR2</span>
+            </div>
+            <h1>Descubre el sabor auténtico del Café Premium Ecuatoriano</h1>
+            <p>Cultivado en las altas tierras de Loja, Azuay, Imbabura y Pichincha, con prácticas sostenibles y comercio justo.</p>
+            <a href="#suscribirse" class="cta-button">Quiero probarlo - 10% descuento</a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <h2 class="section-title">¿Por qué elegir nuestro café?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">🌱</div>
+                <h3>100% Orgánico</h3>
+                <p>Café 100% arábica cultivado sin químicos ni pesticidas, respetando la naturaleza.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🤝</div>
+                <h3>Comercio Justo</h3>
+                <p>Apoyamos directamente a pequeños productores ecuatorianos y sus familias.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🍫</div>
+                <h3>Sabor Único</h3>
+                <p>Agridulce con notas de chocolate oscuro y frutas que deleitarán tu paladar.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">🌸</div>
+                <h3>Aroma Floral</h3>
+                <p>Fragancia delicada y cuerpo sedoso que transforma cada taza en una experiencia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Section -->
+    <section class="product-section">
+        <div class="product-container">
+            <div class="product-image">
+                <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80" alt="Café Premium Ecuatoriano">
+            </div>
+            <div class="product-details">
+                <h2>Nuestro Café Premium</h2>
+                <ul>
+                    <li>Cultivado a más de 1,500 metros de altura</li>
+                    <li>Tostado artesanal en pequeños lotes</li>
+                    <li>Empaque que preserva frescura y aroma</li>
+                    <li>Trazabilidad completa desde la finca</li>
+                    <li>Certificación orgánica internacional</li>
+                    <li>Perfil de sabor balanceado y complejo</li>
+                </ul>
+                <a href="#suscribirse" class="cta-button">Ordena ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80" alt="Cliente">
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"El mejor café que he probado. Las notas de chocolate son increíbles y saber que apoyo a productores locales lo hace aún mejor."</p>
+                <p class="testimonial-author">— Carlos M., Quito</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&q=80" alt="Cliente">
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Como barista profesional, puedo decir que este café ecuatoriano tiene una calidad excepcional. El aroma floral es único."</p>
+                <p class="testimonial-author">— Ana L., Guayaquil</p>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-image">
+                    <img src="https://images.unsplash.com/photo-1463453091185-61582044d556?w=300&q=80" alt="Cliente">
+                </div>
+                <div class="stars">★★★★★</div>
+                <p class="testimonial-text">"Cada taza es una experiencia. Me encanta saber la historia detrás de cada grano y apoyar el comercio justo."</p>
+                <p class="testimonial-author">— Diego R., Cuenca</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="suscribirse">
+        <div class="form-container">
+            <h2>Únete a nuestra comunidad cafetera</h2>
+            <p>Suscríbete y recibe un 10% de descuento en tu primera compra</p>
+            <form>
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Tu nombre">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+                <div class="checkbox-group">
+                    <input type="checkbox" id="accept" name="accept" required>
+                    <label for="accept">Acepto recibir noticias, promociones y contenido exclusivo sobre café ecuatoriano.</label>
+                </div>
+                <button type="submit" class="submit-button">Suscribirme y obtener descuento</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Exclusive Content Section -->
+    <section class="exclusive-section">
+        <div class="exclusive-container">
+            <h2 class="section-title" style="color: #FFD700;">Contenido Exclusivo para Suscriptores</h2>
+            <div class="exclusive-grid">
+                <div class="exclusive-item">
+                    <h3>📖 Recetas Especiales</h3>
+                    <p>Descubre nuevas formas de preparar tu café como un experto barista.</p>
+                </div>
+                <div class="exclusive-item">
+                    <h3>🎥 Catas Virtuales</h3>
+                    <p>Participa en sesiones guiadas para explorar los perfiles de sabor.</p>
+                </div>
+                <div class="exclusive-item">
+                    <h3>🌾 Historias de Productores</h3>
+                    <p>Conoce a las familias detrás de tu café y su tradición cafetera.</p>
+                </div>
+                <div class="exclusive-item">
+                    <h3>🎁 Promociones Especiales</h3>
+                    <p>Acceso anticipado a nuevos productos y descuentos exclusivos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Section -->
+    <section class="trust-section">
+        <div class="trust-container">
+            <h2 class="section-title">Comprometidos con la Excelencia</h2>
+            <p style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto 2rem;">Nuestro compromiso con la sostenibilidad y el desarrollo local está respaldado por certificaciones internacionales</p>
+            <div class="certifications">
+                <div class="cert-badge">
+                    <div>🌿</div>
+                    <p style="font-size: 1rem; margin-top: 0.5rem; color: #4A2511;">Orgánico Certificado</p>
+                </div>
+                <div class="cert-badge">
+                    <div>✓</div>
+                    <p style="font-size: 1rem; margin-top: 0.5rem; color: #4A2511;">Comercio Justo</p>
+                </div>
+                <div class="cert-badge">
+                    <div>🇪🇨</div>
+                    <p style="font-size: 1rem; margin-top: 0.5rem; color: #4A2511;">100% Ecuatoriano</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="logo" style="display: flex;">
+                    <div class="logo-icon">M2</div>
+                    <span>MFOR2</span>
+                </div>
+                <p>Café Premium Ecuatoriano</p>
+                <p>Miguel & Milena</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Twitter">🐦</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>📧 info@mfor2cafe.com</p>
+                <p>📱 (+593) 99 123 4567</p>
+                <p>📍 Quito, Ecuador</p>
+            </div>
+            <div class="footer-section">
+                <h3>Enlaces</h3>
+                <a href="#">Sobre Nosotros</a>
+                <a href="#">Nuestro Café</a>
+                <a href="#">Blog Cafetero</a>
+                <a href="#">Tienda</a>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <a href="#">Términos y Condiciones</a>
+                <a href="#">Política de Privacidad</a>
+                <a href="#">Política de Cookies</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MFOR2. Todos los derechos reservados. Hecho con ❤️ y ☕ en Ecuador</p>
+        </div>
+    </footer>
+</body>
+</html>
